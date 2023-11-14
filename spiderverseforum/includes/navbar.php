@@ -54,7 +54,7 @@ if (!$userLoggedIn) {
         '<li><a href="./pages/login.php">Log in</a></li>',
         '<li><a href="./pages/register.php">Register</a></li>',
         '<li><a href="./pages/posts.php">Posts</a></li>',
-        '<li><a href="./pages/settings.php">Settings</a></li>',
+        '<li><a href="#">Settings</a></li>',
     ];
 } else {
     // Display buttons for logged-in users
@@ -63,7 +63,7 @@ if (!$userLoggedIn) {
         '<li><a href="./pages/posts.php">Posts</a></li>',
         '<li><a href="./pages/create_post.php">Create Post</a></li>',
         '<li><a href="./pages/logout.php">Log out</a></li>',
-        '<li><a href="./pages/settings.php">Settings</a></li>',
+        '<li><a href="#">Settings</a></li>',
     ];
 
     // Add admin-specific button for logged-in admins

@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <base href="./"> <!-- Add the base tag with the correct relative URL -->
+    <base href="../"> <!-- Add the base tag with the correct relative URL -->
     <title>User Login</title>
 </head>
 <body>
     <header>
+        <?php include '../includes/header.php'; ?>
         <?php include '../includes/navbar.php'; ?>
-        
         <h2>Login</h2>
     </header>
 
     <!-- Login form -->
-    <form action="login.php" method="post">
+    <form action="pages/login.php" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
 
@@ -51,7 +51,9 @@
         // Verify password
         if ($userId && password_verify($password, $hashedPassword)) {
             // Set session variable to indicate the user is logged in
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
             $_SESSION['user_id'] = $userId;
 
             // Redirect to the home page or another desired page

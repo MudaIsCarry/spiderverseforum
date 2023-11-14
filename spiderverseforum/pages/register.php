@@ -4,19 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <base href="./"> <!-- Add the base tag with the correct relative URL -->
+    <base href="../"> <!-- Add the base tag with the correct relative URL -->
     <title>User Registration</title>
 </head>
 <body>
     <header>
                 <!-- Placeholder image -->
-                <?php include 'includes/header.php'; ?>
-        <nav>
-            <ul>
-                <li><a href="../index.php">Home</a></li>
-                <li><a href="login.php">Login</a></li>
-            </ul>
-        </nav>
+                <?php include '../includes/header.php'; ?>
+                <?php include '../includes/navbar.php'; ?>
         <h2>Register</h2>
     </header>
 

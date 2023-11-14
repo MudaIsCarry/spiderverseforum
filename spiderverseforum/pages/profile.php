@@ -42,25 +42,31 @@
     $stmt->fetch();
     $stmt->close();
 
-    // Update profile description if the form is submitted
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST['update_description'])) {
-            $newDescription = $_POST['new_description'];
+// Update profile description if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['update_description'])) {
+        $newDescription = $_POST['new_description'];
 
-            // Update the profile description in the database
-            $updateSql = "UPDATE users SET profile_description = ? WHERE user_id = ?";
-            $updateStmt = $conn->prepare($updateSql);
-            $updateStmt->bind_param("si", $newDescription, $userId);
-            $updateStmt->execute();
-            $updateStmt->close();
+        // Update the profile description in the database
+        $updateSql = "UPDATE users SET profile_description = ? WHERE user_id = ?";
+        $updateStmt = $conn->prepare($updateSql);
+        $updateStmt->bind_param("si", $newDescription, $userId);
+        $updateStmt->execute();
+        $updateStmt->close();
 
-            // Update the profileDescription variable
-            $profileDescription = $newDescription;
-        }
+        // Update the profileDescription variable
+        $profileDescription = $newDescription;
+
+        // Use JavaScript to redirect back to the profile page
+        echo '<script>window.location.href = "profile.php";</script>';
+        exit();
     }
+}
+
     ?>
 
     <header>
+        <?php include '../includes/header.php'; ?>
         <?php include '../includes/navbar.php'; ?>
         <h2>User Profile</h2>
     </header>
@@ -71,7 +77,8 @@
         <p><strong>Joined:</strong> <?php echo date('F j, Y', strtotime($createdAt)); ?></p>
 
         <?php
-        if ($profilePicture) {
+        // Display profile picture if it exists
+        if (!empty($profilePicture)) {
             echo '<img src="./images/' . $profilePicture . '" alt="Profile Picture">';
         }
 
